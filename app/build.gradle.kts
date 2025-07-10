@@ -52,5 +52,5 @@ dependencies {
     
     // Firebase
 
-    implementation(libs.firebase.bom)
+    implementation(platform(libs.firebase.bom))
 }
