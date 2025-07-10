@@ -13,6 +13,9 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.Gradex">
         <activity
+                android:name=".ui.central.views.HomeActivity"
+                android:exported="false" />
+        <activity
                 android:name=".ui.startup.views.SignUpActivity"
                 android:exported="false" />
         <activity
