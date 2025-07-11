@@ -65,7 +65,7 @@
                                 android:text="Account"
                                 android:textColor="@color/black"
                                 android:drawablePadding="8dp"
-                                app:drawableStartCompat="@drawable/xic_uic_line_user_circle"
+                                app:drawableStartCompat="@drawable/xic_x16_uic_line_user_circle"
                                 app:drawableTint="@color/black" />
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -108,7 +108,7 @@
                                 android:text="Security"
                                 android:textColor="@color/black"
                                 android:drawablePadding="8dp"
-                                app:drawableStartCompat="@drawable/xic_uic_line_padlock"
+                                app:drawableStartCompat="@drawable/xic_x16_uic_line_padlock"
                                 app:drawableTint="@color/black" />
 
                         <com.google.android.material.textfield.TextInputLayout

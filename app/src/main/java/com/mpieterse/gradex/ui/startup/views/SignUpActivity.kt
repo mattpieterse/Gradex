@@ -117,7 +117,7 @@ class SignUpActivity : AppCompatActivity(), Clickable {
         MaterialAlertDialogBuilder(this).apply {
             setTitle("Verification")
             setMessage("We've sent an email to your inbox at ${model.getUserEmail()}. \nFollow the link to verify your account.")
-            setIcon(R.drawable.xic_uic_line_envelope_shield)
+            setIcon(R.drawable.xic_x24_uic_line_envelope_shield)
             
             // Configs
             
