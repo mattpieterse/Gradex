@@ -49,7 +49,6 @@ class StartActivity : AppCompatActivity() {
 
     private fun setupBindings() {
         binds = ActivityStartBinding.inflate(layoutInflater)
-
     }
 
 
