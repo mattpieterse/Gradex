@@ -210,6 +210,26 @@ class AuthService(
             }
         }
     }
+    
+    
+    /**
+     * Attempts to send a verification email to the currently authenticated
+     * [FirebaseUser].
+     *
+     * @see FirebaseUser.sendEmailVerification
+     * @see await
+     *
+     * @throws IllegalStateException when the transaction cannot be completed.
+     *         This may commonly occur if a user is not authenticated or when
+     *         Firebase requires re-authentication to verify its validity.
+     */
+    suspend fun sendVerificationEmailAsync() {
+        val user = server.currentUser
+        when (user) {
+            null -> throw IllegalStateException("Could not find authenticated user")
+            else -> user.sendEmailVerification().await()
+        }
+    }
 
 
     /**
