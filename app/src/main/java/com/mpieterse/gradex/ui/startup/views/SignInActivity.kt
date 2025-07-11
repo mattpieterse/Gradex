@@ -1,6 +1,9 @@
 package com.mpieterse.gradex.ui.startup.views
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -8,9 +11,14 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivitySignInBinding
+import com.mpieterse.gradex.ui.central.views.HomeActivity
+import com.mpieterse.gradex.ui.shared.models.Clickable
+import com.mpieterse.gradex.ui.shared.models.UiState.Failure
+import com.mpieterse.gradex.ui.shared.models.UiState.Loading
+import com.mpieterse.gradex.ui.shared.models.UiState.Success
 import com.mpieterse.gradex.ui.startup.viewmodels.SignInViewModel
 
-class SignInActivity : AppCompatActivity() {
+class SignInActivity : AppCompatActivity(), Clickable {
     companion object {
         private const val TAG = "SignInActivity"
     }
@@ -31,6 +39,7 @@ class SignInActivity : AppCompatActivity() {
 
         setupBindings()
         setupLayoutUi()
+        setupTouchListeners()
 
         model = ViewModelProvider(this)[SignInViewModel::class.java]
 
@@ -41,7 +50,81 @@ class SignInActivity : AppCompatActivity() {
     // --- ViewModel
 
 
-    private fun observe() {}
+    private fun observe() = model.uiState.observe(this) { state ->
+        when (state) {
+            is Loading -> {
+                load()
+                Clogger.d(
+                    TAG, "Loading..."
+                )
+            }
+
+            is Success -> {
+                cast()
+                Clogger.d(
+                    TAG, "Success..."
+                )
+
+                startActivity(Intent(this@SignInActivity, HomeActivity::class.java))
+                finishAffinity()
+            }
+
+            is Failure -> {
+                cast()
+                Clogger.d(
+                    TAG, "Failure..."
+                )
+
+                Toast.makeText(
+                    this, state.message, Toast.LENGTH_LONG
+                ).show()
+            }
+
+            else -> {
+                Clogger.w(
+                    TAG, "Unhandled state: ${state.javaClass::class.java.simpleName}"
+                )
+            }
+        }
+    }
+
+
+    // --- Internals
+
+
+    private fun tryAuthenticateCredentials() {
+        val email = binds.etIdentity.text.toString().trim()
+        val password = binds.etPassword.text.toString().trim()
+        model.signIn(
+            email, password
+        )
+    }
+
+
+    private fun load() {} // TODO
+
+
+    private fun cast() {} // TODO
+
+
+    // --- Event Handlers
+
+
+    override fun setupTouchListeners() {
+        binds.btSignIn.setOnClickListener(this)
+        binds.tvForgotPassword.setOnClickListener(this)
+    }
+
+
+    override fun onClick(view: View?) = when (view?.id) {
+        binds.btSignIn.id -> tryAuthenticateCredentials()
+        binds.tvForgotPassword.id -> {} // TODO
+        else -> {
+            Clogger.w(
+                TAG, "Unhandled on-click for: ${view?.id}"
+            )
+        }
+    }
 
 
     // --- UI
