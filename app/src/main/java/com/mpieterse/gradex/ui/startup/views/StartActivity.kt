@@ -2,7 +2,7 @@ package com.mpieterse.gradex.ui.startup.views
 
 import android.content.Intent
 import android.os.Bundle
-import android.window.SplashScreen
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -12,11 +12,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivityStartBinding
 import com.mpieterse.gradex.ui.central.views.HomeActivity
+import com.mpieterse.gradex.ui.shared.models.Clickable
 import com.mpieterse.gradex.ui.shared.models.UiState.Failure
 import com.mpieterse.gradex.ui.shared.models.UiState.Success
 import com.mpieterse.gradex.ui.startup.viewmodels.StartViewModel
 
-class StartActivity : AppCompatActivity() {
+class StartActivity : AppCompatActivity(), Clickable {
     companion object {
         private const val TAG = "StartActivity"
     }
@@ -24,8 +25,8 @@ class StartActivity : AppCompatActivity() {
 
     private lateinit var binds: ActivityStartBinding
     private lateinit var model: StartViewModel
-    
-    
+
+
     private var authenticating: Boolean = true
 
 
@@ -39,8 +40,10 @@ class StartActivity : AppCompatActivity() {
         )
 
         persistSplashScreenUntilAuthChecksComplete()
+
         setupBindings()
         setupLayoutUi()
+        setupTouchListeners()
 
         model = ViewModelProvider(this)[StartViewModel::class.java]
 
@@ -72,15 +75,35 @@ class StartActivity : AppCompatActivity() {
             }
         }
     }
-    
-    
+
+
     // --- Internals
-    
-    
+
+
     private fun persistSplashScreenUntilAuthChecksComplete() {
         val splashScreen = installSplashScreen()
         splashScreen.setKeepOnScreenCondition {
             authenticating
+        }
+    }
+
+
+    // --- Event Handlers
+
+
+    override fun setupTouchListeners() {
+        binds.btNavigateToSignIn.setOnClickListener(this)
+        binds.btNavigateToSignUp.setOnClickListener(this)
+    }
+
+
+    override fun onClick(view: View?) = when (view?.id) {
+        binds.btNavigateToSignIn.id -> startActivity(Intent(this, SignInActivity::class.java))
+        binds.btNavigateToSignUp.id -> startActivity(Intent(this, SignUpActivity::class.java))
+        else -> {
+            Clogger.w(
+                TAG, "Unhandled on-click for: ${view?.id}"
+            )
         }
     }
 
