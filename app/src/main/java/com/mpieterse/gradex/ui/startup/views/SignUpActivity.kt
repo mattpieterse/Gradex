@@ -14,11 +14,13 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mpieterse.gradex.R
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivitySignUpBinding
+import com.mpieterse.gradex.databinding.ModalBottomSheetFaqBinding
 import com.mpieterse.gradex.ui.central.views.HomeActivity
 import com.mpieterse.gradex.ui.shared.models.Clickable
 import com.mpieterse.gradex.ui.shared.models.UiState.Failure
 import com.mpieterse.gradex.ui.shared.models.UiState.Loading
 import com.mpieterse.gradex.ui.shared.models.UiState.Success
+import com.mpieterse.gradex.ui.startup.sheets.FaqBottomSheet
 import com.mpieterse.gradex.ui.startup.viewmodels.SignUpViewModel
 
 class SignUpActivity : AppCompatActivity(), Clickable {
@@ -151,7 +153,11 @@ class SignUpActivity : AppCompatActivity(), Clickable {
             finish()
         }
 
-        binds.tvFaq.id -> {} // TODO
+        binds.tvFaq.id -> {
+            FaqBottomSheet().show(
+                supportFragmentManager, FaqBottomSheet.TAG
+            )
+        } // TODO
         else -> {
             Clogger.w(
                 TAG, "Unhandled on-click for: ${view?.id}"
