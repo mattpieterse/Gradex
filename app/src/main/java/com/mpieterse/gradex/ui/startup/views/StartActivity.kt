@@ -1,13 +1,19 @@
 package com.mpieterse.gradex.ui.startup.views
 
+import android.content.Intent
 import android.os.Bundle
+import android.window.SplashScreen
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivityStartBinding
+import com.mpieterse.gradex.ui.central.views.HomeActivity
+import com.mpieterse.gradex.ui.shared.models.UiState.Failure
+import com.mpieterse.gradex.ui.shared.models.UiState.Success
 import com.mpieterse.gradex.ui.startup.viewmodels.StartViewModel
 
 class StartActivity : AppCompatActivity() {
@@ -18,6 +24,9 @@ class StartActivity : AppCompatActivity() {
 
     private lateinit var binds: ActivityStartBinding
     private lateinit var model: StartViewModel
+    
+    
+    private var authenticating: Boolean = true
 
 
     // --- Lifecycle
@@ -29,19 +38,51 @@ class StartActivity : AppCompatActivity() {
             TAG, "Created a new instance of the activity"
         )
 
+        persistSplashScreenUntilAuthChecksComplete()
         setupBindings()
         setupLayoutUi()
 
         model = ViewModelProvider(this)[StartViewModel::class.java]
 
         observe()
+
+        model.authenticate()
     }
 
 
     // --- ViewModel
 
 
-    private fun observe() {}
+    private fun observe() = model.uiState.observe(this) { state ->
+        when (state) {
+            is Success -> {
+                authenticating = false
+                startActivity(Intent(this, HomeActivity::class.java))
+                finishAffinity()
+            }
+
+            is Failure -> {
+                authenticating = false
+            }
+
+            else -> {
+                Clogger.w(
+                    TAG, "Unhandled state: ${state.javaClass::class.java.simpleName}"
+                )
+            }
+        }
+    }
+    
+    
+    // --- Internals
+    
+    
+    private fun persistSplashScreenUntilAuthChecksComplete() {
+        val splashScreen = installSplashScreen()
+        splashScreen.setKeepOnScreenCondition {
+            authenticating
+        }
+    }
 
 
     // --- UI
