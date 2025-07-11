@@ -3,6 +3,7 @@ package com.mpieterse.gradex.ui.startup.views
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -138,9 +139,17 @@ class SignInActivity : AppCompatActivity(), Clickable {
     private fun setupLayoutUi() {
         setContentView(binds.root)
         enableEdgeToEdge()
+
+        // Apply system-bar insets to the root view
         ViewCompat.setOnApplyWindowInsetsListener(binds.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
+
+            // Add system-bottom-bar sized padding to the container
+            val params = binds.svContainer.layoutParams as FrameLayout.LayoutParams
+            params.bottomMargin = systemBars.bottom
+            binds.svContainer.layoutParams = params
+
             insets
         }
     }

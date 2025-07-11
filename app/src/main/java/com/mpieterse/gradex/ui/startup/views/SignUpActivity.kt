@@ -1,9 +1,9 @@
 package com.mpieterse.gradex.ui.startup.views
 
-import com.mpieterse.gradex.R
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.mpieterse.gradex.R
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivitySignUpBinding
 import com.mpieterse.gradex.ui.central.views.HomeActivity
@@ -66,7 +67,7 @@ class SignUpActivity : AppCompatActivity(), Clickable {
                 Clogger.d(
                     TAG, "Success..."
                 )
-                
+
                 model.sendVerificationEmail()
                 showDialogForVerificationEmail()
             }
@@ -108,19 +109,19 @@ class SignUpActivity : AppCompatActivity(), Clickable {
 
 
     private fun cast() {} // TODO
-    
-    
+
+
     // --- Dialogs
-    
-    
+
+
     private fun showDialogForVerificationEmail() {
         MaterialAlertDialogBuilder(this).apply {
             setTitle("Verification")
             setMessage("We've sent an email to your inbox at ${model.getUserEmail()}. \nFollow the link to verify your account.")
             setIcon(R.drawable.xic_x24_uic_line_envelope_shield)
-            
+
             // Configs
-            
+
             setCancelable(false)
 
             // Buttons
@@ -145,7 +146,11 @@ class SignUpActivity : AppCompatActivity(), Clickable {
 
     override fun onClick(view: View?) = when (view?.id) {
         binds.btSignUp.id -> tryAuthenticateCredentials()
-        binds.tvSignIn.id -> {} // TODO
+        binds.tvSignIn.id -> {
+            startActivity(Intent(this, SignInActivity::class.java))
+            finish()
+        }
+
         binds.tvFaq.id -> {} // TODO
         else -> {
             Clogger.w(
@@ -166,9 +171,17 @@ class SignUpActivity : AppCompatActivity(), Clickable {
     private fun setupLayoutUi() {
         setContentView(binds.root)
         enableEdgeToEdge()
+
+        // Apply system-bar insets to the root view
         ViewCompat.setOnApplyWindowInsetsListener(binds.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
+
+            // Add system-bottom-bar sized padding to the container
+            val params = binds.svContainer.layoutParams as FrameLayout.LayoutParams
+            params.bottomMargin = systemBars.bottom
+            binds.svContainer.layoutParams = params
+
             insets
         }
     }
