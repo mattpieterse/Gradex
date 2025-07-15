@@ -5,6 +5,7 @@ plugins {
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
     id("com.google.firebase.firebase-perf")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -70,4 +71,10 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     kapt(libs.androidx.room.compiler)
     implementation(libs.androidx.room.paging)
+    
+    
+    // HiltDI
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 }
