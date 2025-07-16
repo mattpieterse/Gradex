@@ -6,16 +6,16 @@
     <item
             android:id="@+id/nav_calendar"
             android:title="@string/menu_nav_bottom_item_calendar_title"
-            android:icon="@drawable/xic_x24_uic_line_calendar_alt" />
+            android:icon="@drawable/xic_x24_uic_line_calendar" />
 
     <item
             android:id="@+id/nav_overview"
             android:title="@string/menu_nav_bottom_item_overview_title"
-            android:icon="@drawable/xic_x24_uic_line_university" />
+            android:icon="@drawable/xic_x24_uic_line_estate" />
 
     <item
             android:id="@+id/nav_grades"
             android:title="@string/menu_nav_bottom_item_grades_title"
-            android:icon="@drawable/xic_x24_uic_line_trophy" />
+            android:icon="@drawable/xic_x24_uic_line_chart_pie_alt" />
 
 </menu>

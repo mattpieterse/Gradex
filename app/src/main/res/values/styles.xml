@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ShapeAppearance.BottomNavigationView.Top30Percent"
+            parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        
+        <!-- Configuration -->
+        
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">20%</item>
+        <item name="cornerSizeTopRight">20%</item>
+        <item name="cornerSizeBottomLeft">0%</item>
+        <item name="cornerSizeBottomRight">0%</item>
+    </style>
+</resources>

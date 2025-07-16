@@ -26,7 +26,7 @@
             app:menu="@menu/menu_nav_bottom"
             app:labelVisibilityMode="unlabeled"
             app:itemIconSize="24dp"
-            android:paddingVertical="0dp"
+            app:shapeAppearance="@style/ShapeAppearance.BottomNavigationView.Top30Percent"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             app:layout_constraintBottom_toBottomOf="@+id/main" />
