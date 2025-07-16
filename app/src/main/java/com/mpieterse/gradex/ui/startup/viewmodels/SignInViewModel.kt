@@ -11,11 +11,14 @@ import com.mpieterse.gradex.ui.shared.models.UiState
 import com.mpieterse.gradex.ui.shared.models.UiState.Failure
 import com.mpieterse.gradex.ui.shared.models.UiState.Loading
 import com.mpieterse.gradex.ui.shared.models.UiState.Success
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeout
+import javax.inject.Inject
 
-class SignInViewModel(
-    private val authService: AuthService = AuthService()
+@HiltViewModel
+class SignInViewModel @Inject constructor(
+    private val authService: AuthService
 ) : ViewModel() {
     companion object {
         private const val TAG = "SignInViewModel"

@@ -3,7 +3,9 @@ package com.mpieterse.gradex.core.services
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.mpieterse.gradex.core.utils.Clogger
+import dagger.hilt.EntryPoint
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
 
 /**
  * Service to handle authentication operations in the [FirebaseAuth] server.
@@ -22,8 +24,8 @@ import kotlinx.coroutines.tasks.await
  *
  * @see FirebaseAuth
  */
-class AuthService(
-    private val server: FirebaseAuth = FirebaseAuth.getInstance()
+class AuthService @Inject constructor(
+    private val server: FirebaseAuth
 ) {
     companion object {
         private const val TAG = "AuthService"
