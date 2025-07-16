@@ -44,7 +44,7 @@ data class Teacher(
     override var stashedAt: Instant? = null,
 
 
-    // --- Attributes
+// --- Attributes
 
 
     @ColumnInfo(name = "degree_id")
@@ -71,9 +71,9 @@ data class Teacher(
     companion object {
         private const val TAG = "Teacher"
     }
-    
-    
-    // --- Functions
+
+
+// --- Functions
 
 
     fun getFullName(): String = "$nameFirst $nameFinal"

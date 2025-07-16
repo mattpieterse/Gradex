@@ -6,7 +6,7 @@ import java.util.UUID
 
 /**
  * Interface definition for an identifiable entity.
- * 
+ *
  * @property id
  * @see Keyed.isIdentifierValid
  */
@@ -16,7 +16,7 @@ interface Keyed {
     }
 
 
-    // --- Fields
+// --- Fields
 
 
     /**
@@ -46,7 +46,7 @@ interface Keyed {
     val id: UUID
 
 
-    // --- Functions
+// --- Functions
 
 
     /**

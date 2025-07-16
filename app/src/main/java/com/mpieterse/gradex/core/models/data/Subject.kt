@@ -51,18 +51,18 @@ data class Subject(
     override var stashedAt: Instant? = null,
 
 
-    // --- Attributes
-    
-    
+// --- Attributes
+
+
     @ColumnInfo(name = "degree_id")
     var degreeId: UUID,
-    
-    
+
+
     @ColumnInfo(name = "term_id")
     var termId: UUID,
-    
-    
-) : Keyed, Auditable, Stashable {
+
+
+    ) : Keyed, Auditable, Stashable {
     companion object {
         private const val TAG = "Subject"
     }

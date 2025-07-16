@@ -25,14 +25,14 @@ class SignInViewModel @Inject constructor(
     }
 
 
-    // --- Fields
+// --- Fields
 
 
     private val _uiState = MutableLiveData<UiState>()
     val uiState: LiveData<UiState> = _uiState
 
 
-    // --- Contracts
+// --- Contracts
 
 
     fun signIn(
@@ -86,7 +86,7 @@ class SignInViewModel @Inject constructor(
     fun isCurrentUserVerified(): Boolean = authService.getCurrentUser()?.isEmailVerified ?: false
 
 
-    // --- Internals
+// --- Internals
 
 
     private fun requireValidCredentials(

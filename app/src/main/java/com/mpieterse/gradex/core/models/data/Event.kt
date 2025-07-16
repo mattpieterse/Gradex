@@ -4,15 +4,15 @@ import java.time.LocalDate
 import java.time.LocalTime
 
 /**
- * 
+ *
  */
 interface Event : Keyed, Auditable, Stashable {
     companion object {
         private const val TAG = "Event"
     }
-    
-    
-    // --- Fields
+
+
+// --- Fields
 
 
     /**
@@ -41,7 +41,7 @@ interface Event : Keyed, Auditable, Stashable {
 
     /**
      * The time that the [Event] is scheduled to cease.
-     * 
+     *
      * **Note:** The value of this field should be guarded to ensure that it is
      * not before or equal to the [timeOfStart]. This ensures that erroneous
      * calculations are not performed at a later stage.
@@ -49,25 +49,25 @@ interface Event : Keyed, Auditable, Stashable {
     var timeOfCease: LocalTime?
 
 
-    // --- Functions
+// --- Functions
 
 
     /**
      * Calculates the duration of the [Event] in minutes.
-     * 
+     *
      * **Note:** If the returned value is negative or zero, it is likely that
      * one or more of the following conditions are true:
-     * 
+     *
      * - The [timeOfStart] is `null`.
      * - The [timeOfCease] is `null`.
      * - The [timeOfCease] is before the [timeOfStart].
      * - The [timeOfCease] is the same as the [timeOfStart].
      * - Both values are `null`.
-     * 
-     * @return The number of minutes between [timeOfStart] and [timeOfCease]. 
+     *
+     * @return The number of minutes between [timeOfStart] and [timeOfCease].
      *         This represents the duration of the event, and can be used to
      *         perform further logic.
-     *         
+     *
      * @see timeOfStart
      * @see timeOfCease
      */

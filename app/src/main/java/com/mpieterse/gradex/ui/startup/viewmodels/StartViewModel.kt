@@ -20,14 +20,14 @@ class StartViewModel @Inject constructor(
     }
 
 
-    // --- Fields
+// --- Fields
 
 
     private val _uiState = MutableLiveData<UiState>()
     val uiState: LiveData<UiState> = _uiState
 
 
-    // --- Contracts
+// --- Contracts
 
 
     fun authenticate() {

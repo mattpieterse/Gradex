@@ -43,7 +43,7 @@ data class Grade(
     override var stashedAt: Instant? = null,
 
 
-    // --- Attributes
+// --- Attributes
 
 
     @ColumnInfo(name = "subject_id")
@@ -78,10 +78,10 @@ data class Grade(
     companion object {
         private const val TAG = "Grade"
     }
-    
-    
-    // --- Functions
-    
-    
+
+
+// --- Functions
+
+
     fun getWeightedGrade(): Double = (mark * weighting)
 }

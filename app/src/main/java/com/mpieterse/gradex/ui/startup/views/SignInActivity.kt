@@ -10,7 +10,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivitySignInBinding
 import com.mpieterse.gradex.ui.central.views.HomeActivity
@@ -32,7 +31,7 @@ class SignInActivity : AppCompatActivity(), Clickable {
     private val model: SignInViewModel by viewModels()
 
 
-    // --- Lifecycle
+// --- Lifecycle
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,14 +43,11 @@ class SignInActivity : AppCompatActivity(), Clickable {
         setupBindings()
         setupLayoutUi()
         setupTouchListeners()
-
-        // model = ViewModelProvider(this)[SignInViewModel::class.java]
-
         observe()
     }
 
 
-    // --- ViewModel
+// --- ViewModel
 
 
     private fun observe() = model.uiState.observe(this) { state ->
@@ -93,7 +89,7 @@ class SignInActivity : AppCompatActivity(), Clickable {
     }
 
 
-    // --- Internals
+// --- Internals
 
 
     private fun tryAuthenticateCredentials() {
@@ -111,7 +107,7 @@ class SignInActivity : AppCompatActivity(), Clickable {
     private fun cast() {} // TODO
 
 
-    // --- Event Handlers
+// --- Event Handlers
 
 
     override fun setupTouchListeners() {
@@ -131,7 +127,7 @@ class SignInActivity : AppCompatActivity(), Clickable {
     }
 
 
-    // --- UI
+// --- UI
 
 
     private fun setupBindings() {

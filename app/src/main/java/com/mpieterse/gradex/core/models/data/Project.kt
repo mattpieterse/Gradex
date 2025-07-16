@@ -47,7 +47,7 @@ data class Project(
 
     @ColumnInfo(name = "completed_at")
     override var completedAt: Instant? = null,
-    
+
 
     @ColumnInfo(name = "name")
     override var name: String,
@@ -69,7 +69,7 @@ data class Project(
     override var timeOfCease: LocalTime? = null,
 
 
-    // --- Attributes
+// --- Attributes
 
 
     @ColumnInfo(name = "subject_id")
@@ -78,7 +78,7 @@ data class Project(
 
     @ColumnInfo(name = "mode")
     var mode: AssignmentMode,
-    
+
 
     @ColumnInfo(name = "type")
     var type: AssignmentType,

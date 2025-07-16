@@ -34,13 +34,13 @@ object DataModule {
     fun provideDatabase(@ApplicationContext context: Context): AppDatabase =
         AppDatabase.getInstance(context)
 
-    
+
 // --- Data Access Objects (DAOs)
-    
+
 
     /**
      * Injects the [DegreeDao] instance.
-     * 
+     *
      * @return [DegreeDao]
      */
     @Provides
@@ -49,10 +49,10 @@ object DataModule {
         return appDatabase.degreeDao()
     }
 
-    
+
     /**
      * Injects the [GradeDao] instance.
-     * 
+     *
      * @return [GradeDao]
      */
     @Provides
@@ -61,10 +61,10 @@ object DataModule {
         return appDatabase.gradeDao()
     }
 
-    
+
     /**
      * Injects the [LectureDao] instance.
-     * 
+     *
      * @return [LectureDao]
      */
     @Provides
@@ -73,10 +73,10 @@ object DataModule {
         return appDatabase.lectureDao()
     }
 
-    
+
     /**
      * Injects the [ProjectDao] instance.
-     * 
+     *
      * @return [ProjectDao]
      */
     @Provides
@@ -85,10 +85,10 @@ object DataModule {
         return appDatabase.projectDao()
     }
 
-    
+
     /**
      * Injects the [StudentDao] instance.
-     * 
+     *
      * @return [StudentDao]
      */
     @Provides
@@ -97,10 +97,10 @@ object DataModule {
         return appDatabase.studentDao()
     }
 
-    
+
     /**
      * Injects the [SubjectDao] instance.
-     * 
+     *
      * @return [SubjectDao]
      */
     @Provides
@@ -109,10 +109,10 @@ object DataModule {
         return appDatabase.subjectDao()
     }
 
-    
+
     /**
      * Injects the [SubjectTeacherDao] instance.
-     * 
+     *
      * @return [SubjectTeacherDao]
      */
     @Provides
@@ -121,10 +121,10 @@ object DataModule {
         return appDatabase.subjectTeacherDao()
     }
 
-    
+
     /**
      * Injects the [TeacherDao] instance.
-     * 
+     *
      * @return [TeacherDao]
      */
     @Provides
@@ -133,10 +133,10 @@ object DataModule {
         return appDatabase.teacherDao()
     }
 
-    
+
     /**
      * Injects the [TeacherCellContactDao] instance.
-     * 
+     *
      * @return [TeacherCellContactDao]
      */
     @Provides
@@ -145,10 +145,10 @@ object DataModule {
         return appDatabase.teacherCellContactDao()
     }
 
-    
+
     /**
      * Injects the [TeacherMailContactDao] instance.
-     * 
+     *
      * @return [TeacherMailContactDao]
      */
     @Provides
@@ -157,10 +157,10 @@ object DataModule {
         return appDatabase.teacherMailContactDao()
     }
 
-    
+
     /**
      * Injects the [TermDao] instance.
-     * 
+     *
      * @return [TermDao]
      */
     @Provides

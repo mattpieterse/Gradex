@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
 import com.mpieterse.gradex.core.models.data.AggregatedTeacher
-import com.mpieterse.gradex.core.models.data.Degree
 import com.mpieterse.gradex.core.models.data.Teacher
 import com.mpieterse.gradex.core.models.data.TeacherCellContact
 import com.mpieterse.gradex.core.models.data.TeacherMailContact
@@ -21,8 +20,8 @@ interface TeacherDao : UpsertDao<Teacher> {
     }
 
 
-    // --- Queries
-    
+// --- Queries
+
 
     /**
      * TODO ...
@@ -57,8 +56,8 @@ interface TeacherDao : UpsertDao<Teacher> {
         """
     )
     suspend fun fetchOne(targetId: UUID): Teacher?
-    
-    
+
+
     // --- ...
 
     /**

@@ -30,7 +30,7 @@ class EnumConverter {
     }
 
 
-    // --- Helpers
+// --- Helpers
 
 
     private fun <T : Enum<T>> toSimpleEnum(value: T?): String? = value?.name
@@ -39,7 +39,7 @@ class EnumConverter {
     }
 
 
-    // --- Converters (AssignmentType)
+// --- Converters (AssignmentType)
 
 
     /**
@@ -74,7 +74,7 @@ class EnumConverter {
     }
 
 
-    // --- Converters (AssignmentMode)
+// --- Converters (AssignmentMode)
 
 
     /**
@@ -109,7 +109,7 @@ class EnumConverter {
     }
 
 
-    // --- Converters (HumanSex)
+// --- Converters (HumanSex)
 
 
     /**
@@ -139,7 +139,7 @@ class EnumConverter {
         Clogger.d(
             TAG, "Converting to Simple HumanSex"
         )
-        
+
         return toSimpleEnum(value)
     }
 }

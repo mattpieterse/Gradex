@@ -1,11 +1,9 @@
 package com.mpieterse.gradex.ui.startup.viewmodels
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mpieterse.gradex.core.contexts.AppDatabase
 import com.mpieterse.gradex.core.daos.StudentDao
 import com.mpieterse.gradex.core.models.data.Student
 import com.mpieterse.gradex.core.services.AuthService
@@ -18,7 +16,6 @@ import com.mpieterse.gradex.ui.shared.models.UiState.Success
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeout
-import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
@@ -31,14 +28,14 @@ class SignUpViewModel @Inject constructor(
     }
 
 
-    // --- Fields
+// --- Fields
 
 
     private val _uiState = MutableLiveData<UiState>()
     val uiState: LiveData<UiState> = _uiState
 
 
-    // --- Contracts
+// --- Contracts
 
 
     fun signUp(
@@ -72,10 +69,12 @@ class SignUpViewModel @Inject constructor(
                 Clogger.d(
                     TAG, "Attempt to authenticate returned a success!"
                 )
-                
-                dao.upsert(Student(
-                    authId = authService.getCurrentUser()!!.uid
-                ))
+
+                dao.upsert(
+                    Student(
+                        authId = authService.getCurrentUser()!!.uid
+                    )
+                )
 
                 _uiState.value = Success
             }
@@ -116,7 +115,7 @@ class SignUpViewModel @Inject constructor(
     fun getUserEmail(): String? = authService.getCurrentUser()?.email
 
 
-    // --- Internals
+// --- Internals
 
 
     private fun validateCredentials(
@@ -126,7 +125,7 @@ class SignUpViewModel @Inject constructor(
             "Email Address is Invalid"
         }
 
-        // --- Validate passwords
+        // Validate passwords
 
         require(AuthValidator.isValidPassword(defaultPassword)) {
             "Created Password is Invalid"

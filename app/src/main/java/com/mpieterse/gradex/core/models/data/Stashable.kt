@@ -23,7 +23,7 @@ interface Stashable {
     }
 
 
-    // --- Fields
+// --- Fields
 
 
     /**
@@ -42,7 +42,7 @@ interface Stashable {
     var stashedAt: Instant?
 
 
-    // --- Functions
+// --- Functions
 
 
     /**

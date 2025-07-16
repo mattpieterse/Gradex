@@ -2,7 +2,6 @@ package com.mpieterse.gradex.core.daos
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.mpieterse.gradex.core.models.data.Degree
 import com.mpieterse.gradex.core.models.data.TeacherCellContact
 import com.mpieterse.gradex.core.models.data.TeacherMailContact
 import kotlinx.coroutines.flow.Flow
@@ -18,8 +17,8 @@ interface TeacherMailContactDao : UpsertDao<TeacherMailContact> {
     }
 
 
-    // --- Queries
-    
+// --- Queries
+
 
     /**
      * TODO ...

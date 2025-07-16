@@ -29,7 +29,7 @@ data class Student(
     override var updatedAt: Instant = Instant.now(),
 
 
-    // --- Attributes
+// --- Attributes
 
 
     @ColumnInfo(name = "auth_id")

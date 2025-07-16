@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
-import androidx.room.PrimaryKey
 import java.time.Instant
 import java.util.UUID
 
@@ -45,7 +44,7 @@ class SubjectTeacher(
     override var updatedAt: Instant = Instant.now(),
 
 
-    // --- Composite Keys
+// --- Composite Keys
 
 
     @ColumnInfo(name = "subject_id")

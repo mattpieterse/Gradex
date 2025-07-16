@@ -3,7 +3,6 @@ package com.mpieterse.gradex.core.services
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.mpieterse.gradex.core.utils.Clogger
-import dagger.hilt.EntryPoint
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
@@ -32,7 +31,7 @@ class AuthService @Inject constructor(
     }
 
 
-    // --- Functions
+// --- Functions
 
 
     /**

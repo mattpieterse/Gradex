@@ -44,7 +44,7 @@ data class Term(
     override var stashedAt: Instant? = null,
 
 
-    // --- Attributes
+// --- Attributes
 
 
     @ColumnInfo(name = "degree_id")

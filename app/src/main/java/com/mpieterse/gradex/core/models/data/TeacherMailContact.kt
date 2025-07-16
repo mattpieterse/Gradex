@@ -42,7 +42,7 @@ data class TeacherMailContact(
     override var stashedAt: Instant? = null,
 
 
-    // --- Attributes
+// --- Attributes
 
 
     @ColumnInfo(name = "teacher_id")

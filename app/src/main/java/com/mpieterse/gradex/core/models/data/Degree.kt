@@ -43,7 +43,7 @@ data class Degree(
     override var stashedAt: Instant? = null,
 
 
-    // --- Attributes
+// --- Attributes
 
 
     @ColumnInfo(name = "student_id")

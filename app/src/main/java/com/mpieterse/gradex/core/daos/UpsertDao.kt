@@ -23,7 +23,7 @@ interface UpsertDao<T> where T : Keyed, T : Auditable {
     }
 
 
-    // --- Queries
+// --- Queries
 
 
     @Insert(onConflict = OnConflictStrategy.ABORT)

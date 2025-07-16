@@ -6,7 +6,7 @@ import java.time.Instant
 /**
  *
  * @property completedAt
- * 
+ *
  * @see Completable.isCompleted
  * @see Completable.isDiscarded
  * @see Completable.complete
@@ -16,29 +16,29 @@ interface Completable {
     companion object {
         private const val TAG = "Completable"
     }
-    
-    
-    // --- Fields
+
+
+// --- Fields
 
 
     /**
      * The [Instant] at which the entity was marked as complete.
-     * 
+     *
      * **Implementation:**
-     * 
+     *
      * ```
      * override var completedAt: Instant? = null
      * ```
      */
     var completedAt: Instant?
-    
-    
-    // --- Functions
+
+
+// --- Functions
 
 
     /**
      *
-     * 
+     *
      * @see complete
      * @see reassign
      */
@@ -46,7 +46,7 @@ interface Completable {
 
 
     /**
-     * 
+     *
      *
      * @see complete
      * @see reassign

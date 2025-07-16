@@ -2,7 +2,6 @@ package com.mpieterse.gradex.core.daos
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.mpieterse.gradex.core.models.data.Degree
 import com.mpieterse.gradex.core.models.data.Student
 import kotlinx.coroutines.flow.Flow
 import java.util.UUID
@@ -17,8 +16,8 @@ interface StudentDao : UpsertDao<Student> {
     }
 
 
-    // --- Queries
-    
+// --- Queries
+
 
     /**
      * TODO ...
@@ -30,7 +29,7 @@ interface StudentDao : UpsertDao<Student> {
     )
     fun streamTb(): Flow<List<Student>>
 
-    
+
     /**
      * TODO ...
      */
@@ -53,8 +52,8 @@ interface StudentDao : UpsertDao<Student> {
         """
     )
     suspend fun fetchOne(targetId: UUID): Student?
-    
-    
+
+
     /**
      * TODO ...
      */
@@ -65,5 +64,5 @@ interface StudentDao : UpsertDao<Student> {
             LIMIT 1
         """
     )
-    suspend fun fetchOneByAuthenticationId(authId: String): Student? 
+    suspend fun fetchOneByAuthenticationId(authId: String): Student?
 }

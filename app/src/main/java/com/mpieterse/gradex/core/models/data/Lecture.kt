@@ -65,7 +65,7 @@ data class Lecture(
     override var timeOfCease: LocalTime?,
 
 
-    // --- Attributes
+// --- Attributes
 
 
     @ColumnInfo(name = "subject_id")

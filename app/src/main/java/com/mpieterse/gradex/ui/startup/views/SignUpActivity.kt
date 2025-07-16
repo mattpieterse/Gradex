@@ -10,12 +10,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mpieterse.gradex.R
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivitySignUpBinding
-import com.mpieterse.gradex.databinding.ModalBottomSheetFaqBinding
 import com.mpieterse.gradex.ui.central.views.HomeActivity
 import com.mpieterse.gradex.ui.shared.models.Clickable
 import com.mpieterse.gradex.ui.shared.models.UiState.Failure
@@ -36,7 +34,7 @@ class SignUpActivity : AppCompatActivity(), Clickable {
     private val model: SignUpViewModel by viewModels()
 
 
-    // --- Lifecycle
+// --- Lifecycle
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,14 +46,11 @@ class SignUpActivity : AppCompatActivity(), Clickable {
         setupBindings()
         setupLayoutUi()
         setupTouchListeners()
-
-        //model = ViewModelProvider(this)[SignUpViewModel::class.java]
-
         observe()
     }
 
 
-    // --- ViewModel
+// --- ViewModel
 
 
     private fun observe() = model.uiState.observe(this) { state ->
@@ -97,7 +92,7 @@ class SignUpActivity : AppCompatActivity(), Clickable {
     }
 
 
-    // --- Internals
+// --- Internals
 
 
     private fun tryAuthenticateCredentials() {
@@ -116,7 +111,7 @@ class SignUpActivity : AppCompatActivity(), Clickable {
     private fun cast() {} // TODO
 
 
-    // --- Dialogs
+// --- Dialogs
 
 
     private fun showDialogForVerificationEmail() {
@@ -139,7 +134,7 @@ class SignUpActivity : AppCompatActivity(), Clickable {
     }
 
 
-    // --- Event Handlers
+// --- Event Handlers
 
 
     override fun setupTouchListeners() {
@@ -169,7 +164,7 @@ class SignUpActivity : AppCompatActivity(), Clickable {
     }
 
 
-    // --- UI
+// --- UI
 
 
     private fun setupBindings() {

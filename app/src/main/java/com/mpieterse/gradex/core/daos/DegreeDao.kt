@@ -16,8 +16,8 @@ interface DegreeDao : UpsertDao<Degree> {
     }
 
 
-    // --- Queries
-    
+// --- Queries
+
 
     /**
      * TODO ...
@@ -64,9 +64,9 @@ interface DegreeDao : UpsertDao<Degree> {
             WHERE  s.auth_id = :targetId
         """
     )
-    suspend fun fetchAllByStudentAuthId(targetId: String): List<Degree> 
+    suspend fun fetchAllByStudentAuthId(targetId: String): List<Degree>
 
-    
+
     /**
      * TODO ...
      */

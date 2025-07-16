@@ -28,7 +28,7 @@ data class AggregatedTeacher(
     val entity: Teacher,
 
 
-    // --- Foreign Attributes
+// --- Foreign Attributes
 
 
     /**

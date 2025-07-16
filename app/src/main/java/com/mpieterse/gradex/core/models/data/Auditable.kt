@@ -15,7 +15,7 @@ interface Auditable {
     }
 
 
-    // --- Fields
+// --- Fields
 
 
     /**
@@ -46,7 +46,7 @@ interface Auditable {
     var updatedAt: Instant
 
 
-    // --- Functions
+// --- Functions
 
 
     /**

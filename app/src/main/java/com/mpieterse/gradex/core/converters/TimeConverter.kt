@@ -27,7 +27,7 @@ class TimeConverter {
     }
 
 
-    // --- Converters (Instant)
+// --- Converters (Instant)
 
 
     /**
@@ -64,7 +64,7 @@ class TimeConverter {
     }
 
 
-    // --- Converters (LocalDate)
+// --- Converters (LocalDate)
 
 
     /**
@@ -101,7 +101,7 @@ class TimeConverter {
     }
 
 
-    // --- Converters (LocalTime)
+// --- Converters (LocalTime)
 
 
     /**
@@ -138,7 +138,7 @@ class TimeConverter {
     }
 
 
-    // --- Converters (LocalDateTime)
+// --- Converters (LocalDateTime)
 
 
     /**

@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivityStartBinding
 import com.mpieterse.gradex.ui.central.views.HomeActivity
@@ -33,7 +32,7 @@ class StartActivity : AppCompatActivity(), Clickable {
     private var authenticating: Boolean = true
 
 
-    // --- Lifecycle
+// --- Lifecycle
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,16 +46,13 @@ class StartActivity : AppCompatActivity(), Clickable {
         setupBindings()
         setupLayoutUi()
         setupTouchListeners()
-
-        // model = ViewModelProvider(this)[StartViewModel::class.java]
-
         observe()
 
         model.authenticate()
     }
 
 
-    // --- ViewModel
+// --- ViewModel
 
 
     private fun observe() = model.uiState.observe(this) { state ->
@@ -80,7 +76,7 @@ class StartActivity : AppCompatActivity(), Clickable {
     }
 
 
-    // --- Internals
+// --- Internals
 
 
     private fun persistSplashScreenUntilAuthChecksComplete() {
@@ -91,7 +87,7 @@ class StartActivity : AppCompatActivity(), Clickable {
     }
 
 
-    // --- Event Handlers
+// --- Event Handlers
 
 
     override fun setupTouchListeners() {
@@ -111,7 +107,7 @@ class StartActivity : AppCompatActivity(), Clickable {
     }
 
 
-    // --- UI
+// --- UI
 
 
     private fun setupBindings() {

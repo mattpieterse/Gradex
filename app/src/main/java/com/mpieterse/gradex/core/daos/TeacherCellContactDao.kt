@@ -2,7 +2,6 @@ package com.mpieterse.gradex.core.daos
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.mpieterse.gradex.core.models.data.Degree
 import com.mpieterse.gradex.core.models.data.TeacherCellContact
 import kotlinx.coroutines.flow.Flow
 import java.util.UUID
@@ -17,8 +16,8 @@ interface TeacherCellContactDao : UpsertDao<TeacherCellContact> {
     }
 
 
-    // --- Queries
-    
+// --- Queries
+
 
     /**
      * TODO ...
