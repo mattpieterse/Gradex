@@ -48,12 +48,10 @@ class SubjectTeacher(
     // --- Composite Keys
 
 
-    @PrimaryKey
     @ColumnInfo(name = "subject_id")
     val subjectId: UUID,
 
 
-    @PrimaryKey
     @ColumnInfo(name = "teacher_id")
     val teacherId: UUID,
 
