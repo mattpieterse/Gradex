@@ -4,11 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivityStartBinding
 import com.mpieterse.gradex.ui.central.views.HomeActivity
@@ -16,7 +16,9 @@ import com.mpieterse.gradex.ui.shared.models.Clickable
 import com.mpieterse.gradex.ui.shared.models.UiState.Failure
 import com.mpieterse.gradex.ui.shared.models.UiState.Success
 import com.mpieterse.gradex.ui.startup.viewmodels.StartViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class StartActivity : AppCompatActivity(), Clickable {
     companion object {
         private const val TAG = "StartActivity"
@@ -24,13 +26,13 @@ class StartActivity : AppCompatActivity(), Clickable {
 
 
     private lateinit var binds: ActivityStartBinding
-    private lateinit var model: StartViewModel
+    private val model: StartViewModel by viewModels()
 
 
     private var authenticating: Boolean = true
 
 
-    // --- Lifecycle
+// --- Lifecycle
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,16 +46,13 @@ class StartActivity : AppCompatActivity(), Clickable {
         setupBindings()
         setupLayoutUi()
         setupTouchListeners()
-
-        model = ViewModelProvider(this)[StartViewModel::class.java]
-
         observe()
 
         model.authenticate()
     }
 
 
-    // --- ViewModel
+// --- ViewModel
 
 
     private fun observe() = model.uiState.observe(this) { state ->
@@ -77,7 +76,7 @@ class StartActivity : AppCompatActivity(), Clickable {
     }
 
 
-    // --- Internals
+// --- Internals
 
 
     private fun persistSplashScreenUntilAuthChecksComplete() {
@@ -88,7 +87,7 @@ class StartActivity : AppCompatActivity(), Clickable {
     }
 
 
-    // --- Event Handlers
+// --- Event Handlers
 
 
     override fun setupTouchListeners() {
@@ -108,7 +107,7 @@ class StartActivity : AppCompatActivity(), Clickable {
     }
 
 
-    // --- UI
+// --- UI
 
 
     private fun setupBindings() {

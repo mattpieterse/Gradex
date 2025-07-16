@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mpieterse.gradex.core.daos.StudentDao
+import com.mpieterse.gradex.core.models.data.Student
 import com.mpieterse.gradex.core.services.AuthService
 import com.mpieterse.gradex.core.utils.AuthValidator
 import com.mpieterse.gradex.core.utils.Clogger
@@ -11,25 +13,29 @@ import com.mpieterse.gradex.ui.shared.models.UiState
 import com.mpieterse.gradex.ui.shared.models.UiState.Failure
 import com.mpieterse.gradex.ui.shared.models.UiState.Loading
 import com.mpieterse.gradex.ui.shared.models.UiState.Success
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeout
+import javax.inject.Inject
 
-class SignUpViewModel(
-    private val authService: AuthService = AuthService()
+@HiltViewModel
+class SignUpViewModel @Inject constructor(
+    private val authService: AuthService,
+    private val dao: StudentDao
 ) : ViewModel() {
     companion object {
         private const val TAG = "SignUpViewModel"
     }
 
 
-    // --- Fields
+// --- Fields
 
 
     private val _uiState = MutableLiveData<UiState>()
     val uiState: LiveData<UiState> = _uiState
 
 
-    // --- Contracts
+// --- Contracts
 
 
     fun signUp(
@@ -62,6 +68,12 @@ class SignUpViewModel(
             onSuccess { user ->
                 Clogger.d(
                     TAG, "Attempt to authenticate returned a success!"
+                )
+
+                dao.upsert(
+                    Student(
+                        authId = authService.getCurrentUser()!!.uid
+                    )
                 )
 
                 _uiState.value = Success
@@ -103,7 +115,7 @@ class SignUpViewModel(
     fun getUserEmail(): String? = authService.getCurrentUser()?.email
 
 
-    // --- Internals
+// --- Internals
 
 
     private fun validateCredentials(
@@ -113,7 +125,7 @@ class SignUpViewModel(
             "Email Address is Invalid"
         }
 
-        // --- Validate passwords
+        // Validate passwords
 
         require(AuthValidator.isValidPassword(defaultPassword)) {
             "Created Password is Invalid"

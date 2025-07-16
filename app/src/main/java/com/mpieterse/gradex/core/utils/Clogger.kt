@@ -2,6 +2,10 @@ package com.mpieterse.gradex.core.utils
 
 import android.util.Log
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.mpieterse.gradex.core.utils.Clogger.d
+import com.mpieterse.gradex.core.utils.Clogger.e
+import com.mpieterse.gradex.core.utils.Clogger.i
+import com.mpieterse.gradex.core.utils.Clogger.w
 
 /**
  * Logger to synchronise reports to Logcat and Crashlytics.
@@ -26,6 +30,7 @@ object Clogger {
      * The instance of [FirebaseCrashlytics] to communicate with the server.
      */
     private var crashlytics: FirebaseCrashlytics? = null
+
     init {
         try {
             crashlytics = FirebaseCrashlytics.getInstance()
@@ -37,7 +42,7 @@ object Clogger {
     }
 
 
-    // --- Logging
+// --- Logging
 
 
     /**

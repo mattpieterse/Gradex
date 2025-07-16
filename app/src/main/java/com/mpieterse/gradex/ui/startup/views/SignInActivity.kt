@@ -6,10 +6,10 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivitySignInBinding
 import com.mpieterse.gradex.ui.central.views.HomeActivity
@@ -18,7 +18,9 @@ import com.mpieterse.gradex.ui.shared.models.UiState.Failure
 import com.mpieterse.gradex.ui.shared.models.UiState.Loading
 import com.mpieterse.gradex.ui.shared.models.UiState.Success
 import com.mpieterse.gradex.ui.startup.viewmodels.SignInViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignInActivity : AppCompatActivity(), Clickable {
     companion object {
         private const val TAG = "SignInActivity"
@@ -26,10 +28,10 @@ class SignInActivity : AppCompatActivity(), Clickable {
 
 
     private lateinit var binds: ActivitySignInBinding
-    private lateinit var model: SignInViewModel
+    private val model: SignInViewModel by viewModels()
 
 
-    // --- Lifecycle
+// --- Lifecycle
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,14 +43,11 @@ class SignInActivity : AppCompatActivity(), Clickable {
         setupBindings()
         setupLayoutUi()
         setupTouchListeners()
-
-        model = ViewModelProvider(this)[SignInViewModel::class.java]
-
         observe()
     }
 
 
-    // --- ViewModel
+// --- ViewModel
 
 
     private fun observe() = model.uiState.observe(this) { state ->
@@ -90,7 +89,7 @@ class SignInActivity : AppCompatActivity(), Clickable {
     }
 
 
-    // --- Internals
+// --- Internals
 
 
     private fun tryAuthenticateCredentials() {
@@ -108,7 +107,7 @@ class SignInActivity : AppCompatActivity(), Clickable {
     private fun cast() {} // TODO
 
 
-    // --- Event Handlers
+// --- Event Handlers
 
 
     override fun setupTouchListeners() {
@@ -128,7 +127,7 @@ class SignInActivity : AppCompatActivity(), Clickable {
     }
 
 
-    // --- UI
+// --- UI
 
 
     private fun setupBindings() {

@@ -13,24 +13,25 @@ import javax.inject.Inject
  * stable connection to the internet. Checks should be conducted beforehand, and
  * such edge-cases should be accounted for in failure conditions.
  *
+ * @property AuthService.signUpAsync
+ * @property AuthService.signInAsync
+ * @property AuthService.sendPasswordResetEmailAsync
+ * @property AuthService.deleteCurrentUserAsync
+ * @property AuthService.isUserSignedIn
+ * @property AuthService.getCurrentUser
+ * @property AuthService.logout
+ *
  * @see FirebaseAuth
- * @see AuthService.signUpAsync
- * @see AuthService.signInAsync
- * @see AuthService.sendPasswordResetEmailAsync
- * @see AuthService.deleteCurrentUserAsync
- * @see AuthService.isUserSignedIn
- * @see AuthService.getCurrentUser
- * @see AuthService.logout
  */
-class AuthService(
-    private val server: FirebaseAuth = FirebaseAuth.getInstance()
+class AuthService @Inject constructor(
+    private val server: FirebaseAuth
 ) {
     companion object {
         private const val TAG = "AuthService"
     }
 
 
-    // --- Functions
+// --- Functions
 
 
     /**
@@ -46,7 +47,8 @@ class AuthService(
      * ```
      * viewModelScope.launch {
      *     runCatching {
-     *         withTimeout(3_000) {
+     *         val milliseconds = 3_000L
+     *         withTimeout(milliseconds) {
      *             authService.signUpAsync(email, password)
      *         }
      *     }.apply {
@@ -105,7 +107,8 @@ class AuthService(
      * ```
      * viewModelScope.launch {
      *     runCatching {
-     *         withTimeout(3_000) {
+     *         val milliseconds = 3_000L
+     *         withTimeout(milliseconds) {
      *             authService.signInAsync(email, password)
      *         }
      *     }.apply {
@@ -210,8 +213,8 @@ class AuthService(
             }
         }
     }
-    
-    
+
+
     /**
      * Attempts to send a verification email to the currently authenticated
      * [FirebaseUser].

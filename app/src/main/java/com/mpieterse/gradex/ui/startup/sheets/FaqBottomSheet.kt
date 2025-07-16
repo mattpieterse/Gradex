@@ -21,7 +21,7 @@ class FaqBottomSheet : BottomSheetDialogFragment(), Clickable {
     private lateinit var binds: ModalBottomSheetFaqBinding
 
 
-    // --- Lifecycle
+// --- Lifecycle
 
 
     override fun onCreateView(
@@ -37,7 +37,7 @@ class FaqBottomSheet : BottomSheetDialogFragment(), Clickable {
     }
 
 
-    // --- Internals
+// --- Internals
 
 
     fun openInternalWebpage(
@@ -51,7 +51,7 @@ class FaqBottomSheet : BottomSheetDialogFragment(), Clickable {
     }
 
 
-    // --- Event Handlers
+// --- Event Handlers
 
 
     override fun setupTouchListeners() {
@@ -61,7 +61,8 @@ class FaqBottomSheet : BottomSheetDialogFragment(), Clickable {
 
     override fun onClick(view: View?) = when (view?.id) {
         binds.tvLearnMore.id -> openInternalWebpage(
-            requireContext(), "https://mattpieterse.gitbook.io/gradex/security-and-privacy#credentials"
+            requireContext(),
+            "https://mattpieterse.gitbook.io/gradex/security-and-privacy#credentials"
         )
 
         else -> {
@@ -72,7 +73,7 @@ class FaqBottomSheet : BottomSheetDialogFragment(), Clickable {
     }
 
 
-    // --- UI
+// --- UI
 
 
     /**
