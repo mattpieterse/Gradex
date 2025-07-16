@@ -2,6 +2,7 @@ package com.mpieterse.gradex.core.models.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.time.Instant
@@ -9,6 +10,15 @@ import java.util.UUID
 
 @Entity(
     tableName = "teacher_mail_contact",
+    foreignKeys = [
+        ForeignKey(
+            entity = Teacher::class,
+            parentColumns = ["id"],
+            childColumns = ["teacher_id"],
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE,
+        )
+    ],
     indices = [
         Index(value = ["id"], unique = true)
     ]
@@ -41,9 +51,9 @@ data class TeacherMailContact(
 
     @ColumnInfo(name = "value")
     var value: String,
-    
-    
-) : Keyed, Auditable, Stashable {
+
+
+    ) : Keyed, Auditable, Stashable {
     companion object {
         private const val TAG = "TeacherMailContact"
     }
