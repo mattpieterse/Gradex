@@ -29,7 +29,7 @@ interface TeacherMailContactDao : UpsertDao<TeacherMailContact> {
             SELECT * FROM teacher_mail_contact
         """
     )
-    suspend fun streamTb(): Flow<List<TeacherMailContact>>
+    fun streamTb(): Flow<List<TeacherMailContact>>
 
 
     /**

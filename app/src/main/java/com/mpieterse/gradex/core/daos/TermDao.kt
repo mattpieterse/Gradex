@@ -29,7 +29,7 @@ interface TermDao : UpsertDao<Term> {
             SELECT * FROM term
         """
     )
-    suspend fun streamTb(): Flow<List<Term>>
+    fun streamTb(): Flow<List<Term>>
 
 
     /**

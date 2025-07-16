@@ -27,7 +27,7 @@ interface DegreeDao : UpsertDao<Degree> {
             SELECT * FROM degree
         """
     )
-    suspend fun streamTb(): Flow<List<Degree>>
+    fun streamTb(): Flow<List<Degree>>
 
 
     /**

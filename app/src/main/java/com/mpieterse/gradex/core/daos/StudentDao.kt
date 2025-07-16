@@ -28,7 +28,7 @@ interface StudentDao : UpsertDao<Student> {
             SELECT * FROM student
         """
     )
-    suspend fun streamTb(): Flow<List<Student>>
+    fun streamTb(): Flow<List<Student>>
 
     
     /**

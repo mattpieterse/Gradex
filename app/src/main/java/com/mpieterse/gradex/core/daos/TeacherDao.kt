@@ -32,7 +32,7 @@ interface TeacherDao : UpsertDao<Teacher> {
             SELECT * FROM teacher
         """
     )
-    suspend fun streamTb(): Flow<List<Teacher>>
+    fun streamTb(): Flow<List<Teacher>>
 
 
     /**

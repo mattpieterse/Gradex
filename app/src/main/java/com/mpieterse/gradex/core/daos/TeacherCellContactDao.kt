@@ -28,7 +28,7 @@ interface TeacherCellContactDao : UpsertDao<TeacherCellContact> {
             SELECT * FROM teacher_cell_contact
         """
     )
-    suspend fun streamTb(): Flow<List<TeacherCellContact>>
+    fun streamTb(): Flow<List<TeacherCellContact>>
 
 
     /**
