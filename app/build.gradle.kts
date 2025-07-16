@@ -16,8 +16,8 @@ android {
         applicationId = "com.mpieterse.gradex"
         minSdk = 29
         targetSdk = 36
-        versionCode = 3
-        versionName = "dev-2025m07b-release"
+        versionCode = 4
+        versionName = "dev-2025m07c"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
