@@ -36,7 +36,7 @@ data class AggregatedTeacher(
      */
     @Relation(
         parentColumn = "id",
-        entityColumn = "teacherId"
+        entityColumn = "teacher_id"
     )
     val mailContacts: List<TeacherMailContact>,
 
@@ -46,7 +46,7 @@ data class AggregatedTeacher(
      */
     @Relation(
         parentColumn = "id",
-        entityColumn = "teacherId"
+        entityColumn = "teacher_id"
     )
     val cellContacts: List<TeacherCellContact>,
 
