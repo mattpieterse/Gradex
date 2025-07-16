@@ -10,14 +10,16 @@
 
     <!-- UI -->
 
-    <LinearLayout
+    <FrameLayout
             android:id="@+id/container"
-            android:orientation="vertical"
             android:layout_height="0dp"
-            android:layout_width="match_parent"
-            app:layout_constraintBottom_toTopOf="@+id/nav">
+            android:layout_width="0dp"
+            app:layout_constraintTop_toTopOf="@id/main"
+            app:layout_constraintBottom_toTopOf="@+id/nav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-    </LinearLayout>
+    </FrameLayout>
 
     <!-- Navigation -->
 
@@ -25,6 +27,7 @@
             android:id="@+id/nav"
             app:menu="@menu/menu_nav_bottom"
             app:labelVisibilityMode="unlabeled"
+            android:clipToPadding="false"
             app:itemIconSize="24dp"
             app:shapeAppearance="@style/ShapeAppearance.BottomNavigationView.Top30Percent"
             android:layout_height="wrap_content"
