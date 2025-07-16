@@ -1,5 +1,11 @@
 <resources>
-    <string name="app_name">Gradex</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name"
+            translatable="false">Gradex</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- menu_nav_bottom.xml -->
+    <string name="menu_nav_bottom_item_calendar_title">Calendar</string>
+    <string name="menu_nav_bottom_item_overview_title">Overview</string>
+    <string name="menu_nav_bottom_item_grades_title">Grades</string>
+    <string name="menu_nav_bottom_item_settings_title">Settings</string>
 </resources>
