@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.mpieterse.gradex.R
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivityHomeBinding
-import com.mpieterse.gradex.ui.startup.views.SignUpActivity
+import com.mpieterse.gradex.ui.setting.views.SettingsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,22 +43,23 @@ class HomeActivity : AppCompatActivity() {
 
 
 // --- Internals
-    
-    
+
+
     private fun setupAppBar() {
         // setSupportActionBar(binds.appBar)
-        binds.appBar.setOnMenuItemClickListener { item -> 
+        binds.appBar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.top_settings -> {
                     startActivity(Intent(this, SettingsActivity::class.java))
                 }
+
                 else -> {
                     Clogger.w(
                         TAG, "Unhandled menu-item-on-click for: ${item.itemId}"
                     )
                 }
             }
-            
+
             true
         }
     }
@@ -74,7 +75,7 @@ class HomeActivity : AppCompatActivity() {
                     Clogger.w(
                         TAG, "Unhandled item-on-click for: ${item.itemId}"
                     )
-                    
+
                     null
                 }
             }

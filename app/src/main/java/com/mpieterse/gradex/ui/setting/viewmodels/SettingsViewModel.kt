@@ -1,4 +1,4 @@
-package com.mpieterse.gradex.ui.central.viewmodels
+package com.mpieterse.gradex.ui.setting.viewmodels
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

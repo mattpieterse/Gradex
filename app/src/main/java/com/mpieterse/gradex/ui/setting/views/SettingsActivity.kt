@@ -1,4 +1,4 @@
-package com.mpieterse.gradex.ui.central.views
+package com.mpieterse.gradex.ui.setting.views
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -8,7 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivitySettingsBinding
-import com.mpieterse.gradex.ui.central.viewmodels.SettingsViewModel
+import com.mpieterse.gradex.ui.setting.viewmodels.SettingsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

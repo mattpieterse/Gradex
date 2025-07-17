@@ -18,7 +18,7 @@
         <!-- Activity -->
 
         <activity
-                android:name=".ui.central.views.SettingsActivity"
+                android:name=".ui.setting.views.SettingsActivity"
                 android:exported="false" />
         <activity
                 android:name=".ui.central.views.HomeActivity"
@@ -32,6 +32,8 @@
         <activity
                 android:name=".ui.startup.views.StartActivity"
                 android:exported="true">
+
+            <!-- INFO: Configure as startup activity -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
