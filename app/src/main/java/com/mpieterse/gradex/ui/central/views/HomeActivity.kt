@@ -1,5 +1,6 @@
 package com.mpieterse.gradex.ui.central.views
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.mpieterse.gradex.R
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivityHomeBinding
+import com.mpieterse.gradex.ui.startup.views.SignUpActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,12 +36,32 @@ class HomeActivity : AppCompatActivity() {
         setupBindings()
         setupLayoutUi()
         setupNavigation()
+        setupAppBar()
 
         savedInstanceState ?: showNewFragment(HomeCalendarFragment())
     }
 
 
 // --- Internals
+    
+    
+    private fun setupAppBar() {
+        // setSupportActionBar(binds.appBar)
+        binds.appBar.setOnMenuItemClickListener { item -> 
+            when (item.itemId) {
+                R.id.top_settings -> {
+                    startActivity(Intent(this, SettingsActivity::class.java))
+                }
+                else -> {
+                    Clogger.w(
+                        TAG, "Unhandled menu-item-on-click for: ${item.itemId}"
+                    )
+                }
+            }
+            
+            true
+        }
+    }
 
 
     private fun setupNavigation() {
@@ -48,7 +70,13 @@ class HomeActivity : AppCompatActivity() {
                 R.id.nav_calendar -> HomeCalendarFragment()
                 R.id.nav_grades -> HomeGradesFragment()
                 R.id.nav_overview -> HomeOverviewFragment()
-                else -> null
+                else -> {
+                    Clogger.w(
+                        TAG, "Unhandled item-on-click for: ${item.itemId}"
+                    )
+                    
+                    null
+                }
             }
 
             destination?.let {
