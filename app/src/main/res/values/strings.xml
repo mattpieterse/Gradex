@@ -7,7 +7,7 @@
     <string name="menu_nav_bottom_item_calendar_title">Calendar</string>
     <string name="menu_nav_bottom_item_overview_title">Overview</string>
     <string name="menu_nav_bottom_item_grades_title">Grades</string>
-    
+
     <!-- menu_app_top.xml -->
     <string name="menu_app_top_item_settings_title">Settings</string>
 </resources>
