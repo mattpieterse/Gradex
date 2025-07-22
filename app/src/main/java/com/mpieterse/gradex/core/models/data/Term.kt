@@ -56,11 +56,11 @@ data class Term(
 
 
     @ColumnInfo(name = "date_of_start")
-    var dateOfStart: LocalDate,
+    var dateOfStart: LocalDate? = null,
 
 
     @ColumnInfo(name = "date_of_cease")
-    var dateOfCease: LocalDate,
+    var dateOfCease: LocalDate? = null,
 
 
     ) : Keyed, Auditable, Stashable {
