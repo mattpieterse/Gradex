@@ -58,6 +58,7 @@ dependencies {
     testImplementation(libs.androidx.room.testing)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.browser)
 
     // Firebase
@@ -67,15 +68,14 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.perf)
-    
+
     // RoomDB
 
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     kapt(libs.androidx.room.compiler)
     implementation(libs.androidx.room.paging)
-    
-    
+
     // HiltDI
 
     implementation(libs.hilt.android)
