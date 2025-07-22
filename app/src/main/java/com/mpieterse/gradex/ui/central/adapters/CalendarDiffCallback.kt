@@ -2,7 +2,7 @@ package com.mpieterse.gradex.ui.central.adapters
 
 import androidx.recyclerview.widget.DiffUtil
 import com.mpieterse.gradex.core.utils.Clogger
-import com.mpieterse.gradex.ui.central.CalendarWeekday
+import com.mpieterse.gradex.ui.central.models.CalendarWeekday
 
 class CalendarDiffCallback : DiffUtil.ItemCallback<CalendarWeekday>() {
     companion object {

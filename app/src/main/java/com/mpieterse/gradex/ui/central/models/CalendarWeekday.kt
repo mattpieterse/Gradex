@@ -1,4 +1,4 @@
-package com.mpieterse.gradex.ui.central
+package com.mpieterse.gradex.ui.central.models
 
 import com.mpieterse.gradex.core.models.data.Keyed
 import java.util.UUID

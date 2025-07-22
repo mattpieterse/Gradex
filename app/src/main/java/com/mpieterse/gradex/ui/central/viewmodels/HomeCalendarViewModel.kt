@@ -2,7 +2,7 @@ package com.mpieterse.gradex.ui.central.viewmodels
 
 import androidx.lifecycle.ViewModel
 import com.mpieterse.gradex.core.utils.Clogger
-import com.mpieterse.gradex.ui.central.CalendarWeekday
+import com.mpieterse.gradex.ui.central.models.CalendarWeekday
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar

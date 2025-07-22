@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ItemCalendarNumberBinding
-import com.mpieterse.gradex.ui.central.CalendarWeekday
+import com.mpieterse.gradex.ui.central.models.CalendarWeekday
 
 class CalendarAdapter : ListAdapter<CalendarWeekday, CalendarViewHolder>(CalendarDiffCallback()) {
     companion object {

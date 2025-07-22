@@ -3,7 +3,7 @@ package com.mpieterse.gradex.ui.central.adapters
 import androidx.recyclerview.widget.RecyclerView
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ItemCalendarNumberBinding
-import com.mpieterse.gradex.ui.central.CalendarWeekday
+import com.mpieterse.gradex.ui.central.models.CalendarWeekday
 
 class CalendarViewHolder(
     private val binding: ItemCalendarNumberBinding
