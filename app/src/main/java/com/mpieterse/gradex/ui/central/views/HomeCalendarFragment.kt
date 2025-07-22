@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.FragmentHomeCalendarBinding
+import com.mpieterse.gradex.ui.shared.models.Clickable
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeCalendarFragment : Fragment() {
+class HomeCalendarFragment : Fragment(), Clickable {
     companion object {
         private const val TAG = "HomeCalendarFragment"
     }
@@ -32,6 +33,26 @@ class HomeCalendarFragment : Fragment() {
         Clogger.d(
             TAG, "Created a new instance of the fragment"
         )
+        
+        setupTouchListeners()
+    }
+    
+    
+// --- Event Handlers
+
+
+    override fun setupTouchListeners() {
+        binds.fab.setOnClickListener(this)
+    }
+
+
+    override fun onClick(view: View?) = when (view?.id) {
+        binds.fab.id -> { /* TODO */ }
+        else -> {
+            Clogger.w(
+                TAG, "Unhandled on-click for: ${view?.id}"
+            )
+        }
     }
 
 
