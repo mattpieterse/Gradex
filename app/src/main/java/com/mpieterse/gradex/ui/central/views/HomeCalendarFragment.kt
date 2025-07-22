@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.FragmentHomeCalendarBinding
+import com.mpieterse.gradex.ui.central.viewmodels.HomeCalendarFragmentViewModel
 import com.mpieterse.gradex.ui.shared.models.Clickable
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,6 +20,7 @@ class HomeCalendarFragment : Fragment(), Clickable {
 
 
     private lateinit var binds: FragmentHomeCalendarBinding
+    private val model: HomeCalendarFragmentViewModel by viewModels()
 
 
 // --- Lifecycle
@@ -33,11 +36,11 @@ class HomeCalendarFragment : Fragment(), Clickable {
         Clogger.d(
             TAG, "Created a new instance of the fragment"
         )
-        
+
         setupTouchListeners()
     }
-    
-    
+
+
 // --- Event Handlers
 
 
@@ -47,7 +50,9 @@ class HomeCalendarFragment : Fragment(), Clickable {
 
 
     override fun onClick(view: View?) = when (view?.id) {
-        binds.fab.id -> { /* TODO */ }
+        binds.fab.id -> { /* TODO */
+        }
+
         else -> {
             Clogger.w(
                 TAG, "Unhandled on-click for: ${view?.id}"
