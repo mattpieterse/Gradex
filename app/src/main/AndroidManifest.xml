@@ -2,8 +2,6 @@
 <manifest
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Configuration -->
-
     <application
             android:name=".core.GradexApplication"
             android:allowBackup="true"
@@ -14,9 +12,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.Gradex">
-
+        <activity
+                android:name=".ui.setting.views.DegreesActivity"
+                android:exported="false" />
         <!-- Activity -->
-
         <activity
                 android:name=".ui.setting.views.SettingsActivity"
                 android:exported="false" />
@@ -36,8 +35,10 @@
             <!-- INFO: Configure as startup activity -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
