@@ -25,7 +25,7 @@ class HomeCalendarFragment : Fragment(), Clickable {
 
     private lateinit var adapter: CalendarAdapter
     private lateinit var binds: FragmentHomeCalendarBinding
-    private val model: HomeCalendarViewModel by viewModels()
+    private val activeModel: HomeCalendarViewModel by viewModels()
     private val sharedModel: HomeViewModel by activityViewModels()
 
 
@@ -56,10 +56,10 @@ class HomeCalendarFragment : Fragment(), Clickable {
         binds.rvCalendar.layoutManager = GridLayoutManager(requireContext(), 7)
         binds.rvCalendar.adapter = adapter
         adapter.update(
-            model.loadCalendar()
+            activeModel.loadCalendar()
         )
         
-        sharedModel.screenTitle.value = model.getMonthString()
+        sharedModel.screenTitle.value = activeModel.getMonthString()
     }
 
 

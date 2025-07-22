@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.FragmentHomeOverviewBinding
+import com.mpieterse.gradex.ui.central.viewmodels.HomeOverviewViewModel
 import com.mpieterse.gradex.ui.central.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,6 +21,7 @@ class HomeOverviewFragment : Fragment() {
 
 
     private lateinit var binds: FragmentHomeOverviewBinding
+    private val activeModel: HomeOverviewViewModel by viewModels()
     private val sharedModel: HomeViewModel by activityViewModels()
 
 
@@ -35,7 +38,7 @@ class HomeOverviewFragment : Fragment() {
         Clogger.d(
             TAG, "Created a new instance of the fragment"
         )
-        
+
         sharedModel.screenTitle.value = "Overview"
     }
 
