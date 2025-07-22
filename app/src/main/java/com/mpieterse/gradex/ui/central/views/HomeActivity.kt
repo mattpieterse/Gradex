@@ -3,6 +3,7 @@ package com.mpieterse.gradex.ui.central.views
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.mpieterse.gradex.R
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivityHomeBinding
+import com.mpieterse.gradex.ui.central.viewmodels.HomeViewModel
 import com.mpieterse.gradex.ui.setting.views.SettingsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,6 +23,9 @@ class HomeActivity : AppCompatActivity() {
 
 
     private lateinit var binds: ActivityHomeBinding
+    private val model: HomeViewModel by viewModels()
+
+
     private var currentFragment: Fragment? = null
 
 
