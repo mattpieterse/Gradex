@@ -44,6 +44,16 @@ class HomeActivity : AppCompatActivity() {
         setupAppBar()
 
         savedInstanceState ?: showNewFragment(HomeCalendarFragment())
+
+        observeTitle()
+    }
+
+
+// --- ViewModel
+
+
+    private fun observeTitle() = model.screenTitle.observe(this) { title ->
+        binds.appBar.title = title
     }
 
 

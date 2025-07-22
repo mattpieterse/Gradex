@@ -4,11 +4,13 @@ import androidx.lifecycle.ViewModel
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.ui.central.CalendarWeekday
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeCalendarFragmentViewModel @Inject constructor() : ViewModel() {
+class HomeCalendarViewModel @Inject constructor() : ViewModel() {
     companion object {
         private const val TAG = "HomeCalendarFragmentViewModel"
     }
@@ -30,7 +32,7 @@ class HomeCalendarFragmentViewModel @Inject constructor() : ViewModel() {
             firstWeekday - 1
         }
 
-        for (i in 0 until startIndexOffset) {
+        for (x in 0 until startIndexOffset) {
             weekdays.add(CalendarWeekday(isCurrentMonth = false))
         }
 
@@ -44,5 +46,12 @@ class HomeCalendarFragmentViewModel @Inject constructor() : ViewModel() {
         )
 
         return weekdays
+    }
+
+
+    fun getMonthString(): String {
+        val calendar = Calendar.getInstance()
+        val format = SimpleDateFormat("MMMM yyyy", Locale.UK)
+        return format.format(calendar.time)
     }
 }

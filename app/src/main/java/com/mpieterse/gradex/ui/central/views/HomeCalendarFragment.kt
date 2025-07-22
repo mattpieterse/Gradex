@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.FragmentHomeCalendarBinding
 import com.mpieterse.gradex.ui.central.adapters.CalendarAdapter
-import com.mpieterse.gradex.ui.central.viewmodels.HomeCalendarFragmentViewModel
+import com.mpieterse.gradex.ui.central.viewmodels.HomeCalendarViewModel
+import com.mpieterse.gradex.ui.central.viewmodels.HomeViewModel
 import com.mpieterse.gradex.ui.shared.models.Clickable
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,7 +25,8 @@ class HomeCalendarFragment : Fragment(), Clickable {
 
     private lateinit var adapter: CalendarAdapter
     private lateinit var binds: FragmentHomeCalendarBinding
-    private val model: HomeCalendarFragmentViewModel by viewModels()
+    private val model: HomeCalendarViewModel by viewModels()
+    private val sharedModel: HomeViewModel by activityViewModels()
 
 
 // --- Lifecycle
@@ -55,6 +58,8 @@ class HomeCalendarFragment : Fragment(), Clickable {
         adapter.update(
             model.loadCalendar()
         )
+        
+        sharedModel.screenTitle.value = model.getMonthString()
     }
 
 

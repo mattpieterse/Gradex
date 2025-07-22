@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.FragmentHomeGradesBinding
+import com.mpieterse.gradex.ui.central.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,6 +19,7 @@ class HomeGradesFragment : Fragment() {
 
 
     private lateinit var binds: FragmentHomeGradesBinding
+    private val sharedModel: HomeViewModel by activityViewModels()
 
 
 // --- Lifecycle
@@ -32,6 +35,8 @@ class HomeGradesFragment : Fragment() {
         Clogger.d(
             TAG, "Created a new instance of the fragment"
         )
+
+        sharedModel.screenTitle.value = "Grades"
     }
 
 
