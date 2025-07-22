@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fragment_home_calendar"
         tools:context=".ui.central.views.HomeCalendarFragment"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
@@ -13,6 +14,120 @@
             android:layout_width="match_parent">
 
         <!-- Content -->
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent">
+
+            <!-- Calendar Area -->
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_margin="12dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent">
+
+                <!-- Calendar Header -->
+
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent">
+
+                    <TextView
+                            android:id="@+id/tv_weekday_mon"
+                            android:text="MON"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_weight="1.0"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            tools:ignore="HardcodedText" />
+
+                    <TextView
+                            android:id="@+id/tv_weekday_tue"
+                            android:text="TUE"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_weight="1.0"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            tools:ignore="HardcodedText" />
+
+                    <TextView
+                            android:id="@+id/tv_weekday_wed"
+                            android:text="WED"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_weight="1.0"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            tools:ignore="HardcodedText" />
+
+                    <TextView
+                            android:id="@+id/tv_weekday_thu"
+                            android:text="THU"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_weight="1.0"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            tools:ignore="HardcodedText" />
+
+                    <TextView
+                            android:id="@+id/tv_weekday_fri"
+                            android:text="FRI"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_weight="1.0"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            tools:ignore="HardcodedText" />
+
+                    <TextView
+                            android:id="@+id/tv_weekday_sat"
+                            android:text="SAT"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_weight="1.0"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            tools:ignore="HardcodedText" />
+
+                    <TextView
+                            android:id="@+id/tv_weekday_sun"
+                            android:text="SUN"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_weight="1.0"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            tools:ignore="HardcodedText" />
+
+                </LinearLayout>
+
+                <!-- Calendar Widget -->
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_calendar"
+                        android:overScrollMode="never"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent" />
+
+            </LinearLayout>
+
+            <!-- Lectures Area -->
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent">
+
+            </LinearLayout>
+        </LinearLayout>
+
         <!-- FAB -->
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

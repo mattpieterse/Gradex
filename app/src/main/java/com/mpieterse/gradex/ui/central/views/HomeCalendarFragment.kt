@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.FragmentHomeCalendarBinding
+import com.mpieterse.gradex.ui.central.adapters.CalendarAdapter
 import com.mpieterse.gradex.ui.central.viewmodels.HomeCalendarFragmentViewModel
 import com.mpieterse.gradex.ui.shared.models.Clickable
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,6 +21,7 @@ class HomeCalendarFragment : Fragment(), Clickable {
     }
 
 
+    private lateinit var adapter: CalendarAdapter
     private lateinit var binds: FragmentHomeCalendarBinding
     private val model: HomeCalendarFragmentViewModel by viewModels()
 
@@ -38,6 +41,20 @@ class HomeCalendarFragment : Fragment(), Clickable {
         )
 
         setupTouchListeners()
+        updateCalendar()
+    }
+
+
+// --- Internals
+
+
+    private fun updateCalendar() {
+        adapter = CalendarAdapter()
+        binds.rvCalendar.layoutManager = GridLayoutManager(requireContext(), 7)
+        binds.rvCalendar.adapter = adapter
+        adapter.update(
+            model.loadCalendar()
+        )
     }
 
 

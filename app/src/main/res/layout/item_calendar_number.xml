@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:padding="2dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+    <!-- UI -->
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center"
+            android:minHeight="52dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+        <!-- Weekday -->
+
+        <FrameLayout
+                android:id="@+id/fl_calendar_number"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginBottom="4dp"
+                android:layout_height="44dp"
+                android:layout_width="44dp">
+
+            <TextView
+                    android:id="@+id/tv_calendar_number"
+                    android:text="24"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    tools:ignore="HardcodedText" />
+
+        </FrameLayout>
+
+        <!-- Bubbles -->
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_height="8dp"
+                android:layout_width="wrap_content">
+
+            <!-- TODO: Event dots recycler view -->
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
