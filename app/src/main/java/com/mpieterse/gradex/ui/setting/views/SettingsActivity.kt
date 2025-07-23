@@ -1,6 +1,8 @@
 package com.mpieterse.gradex.ui.setting.views
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -9,10 +11,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivitySettingsBinding
 import com.mpieterse.gradex.ui.setting.viewmodels.SettingsViewModel
+import com.mpieterse.gradex.ui.shared.models.Clickable
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : AppCompatActivity(), Clickable {
     companion object {
         private const val TAG = "SettingsActivity"
     }
@@ -33,6 +36,7 @@ class SettingsActivity : AppCompatActivity() {
 
         setupBindings()
         setupLayoutUi()
+        setupTouchListeners()
         observe()
     }
 
@@ -42,6 +46,27 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun observe() {
         /* TODO */
+    }
+
+
+// --- Event Handlers
+
+
+    override fun setupTouchListeners() {
+        binds.btNavigateToDegrees.setOnClickListener(this)
+    }
+
+
+    override fun onClick(view: View?) = when (view?.id) {
+        binds.btNavigateToDegrees.id -> {
+            startActivity(Intent(this, DegreesActivity::class.java))
+        }
+
+        else -> {
+            Clogger.w(
+                TAG, "Unhandled on-click for: ${view?.id}"
+            )
+        }
     }
 
 
