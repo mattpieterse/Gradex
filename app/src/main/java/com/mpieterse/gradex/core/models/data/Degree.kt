@@ -48,6 +48,10 @@ data class Degree(
 
     @ColumnInfo(name = "student_id")
     var studentId: UUID,
+    
+    
+    @ColumnInfo(name = "toggled_at")
+    var toggledAt: Instant? = null,
 
 
     @ColumnInfo(name = "name")
@@ -57,5 +61,16 @@ data class Degree(
     ) : Keyed, Auditable, Stashable {
     companion object {
         private const val TAG = "Degree"
+    }
+    
+    
+// --- Functions
+
+
+    /**
+     * Sets as the latest default degree.
+     */
+    fun use() {
+        toggledAt = Instant.now()
     }
 }
