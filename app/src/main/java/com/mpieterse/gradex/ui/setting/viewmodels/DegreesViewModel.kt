@@ -1,13 +1,18 @@
 package com.mpieterse.gradex.ui.setting.viewmodels
 
 import androidx.lifecycle.ViewModel
+import com.mpieterse.gradex.core.daos.StudentDao
 import com.mpieterse.gradex.core.models.data.Degree
+import com.mpieterse.gradex.core.services.AuthService
+import com.mpieterse.gradex.core.utils.Clogger
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
-class DegreesViewModel @Inject constructor() : ViewModel() {
+class DegreesViewModel @Inject constructor(
+    private val authService: AuthService,
+    private val dao: StudentDao
+) : ViewModel() {
     companion object {
         private const val TAG = "DegreesViewModel"
     }
@@ -16,19 +21,14 @@ class DegreesViewModel @Inject constructor() : ViewModel() {
 // --- Contracts
 
 
-    fun loadDegrees(): List<Degree> {
-        val seed1 = Degree(
-            name = "BSc Computer & Information Science",
-            studentId = UUID.randomUUID()
+    suspend fun loadDegrees(): List<Degree> {
+        Clogger.i(
+            TAG, "Seeding..."
         )
-        
-        val seed2 = Degree(
-            name = "BSc Physiotherapy",
-            studentId = UUID.randomUUID()
+
+        val student = dao.fetchOneFullStudentByAuthenticationId(
+            authService.getCurrentUser()!!.uid
         )
-        
-        return listOf(
-            seed1, seed2
-        )
+        return student!!.degrees.map { it.entity }
     }
 }

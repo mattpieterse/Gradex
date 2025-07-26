@@ -63,7 +63,7 @@ import com.mpieterse.gradex.core.utils.Clogger
     ],
 
     // -- Configuration
-    exportSchema = true,
+    exportSchema = false,
     version = 1,
 )
 @TypeConverters(
@@ -77,7 +77,7 @@ abstract class AppDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
-        private const val DATABASE_NAME = "gradex.db"
+        private const val DATABASE_NAME = "gradex-app.db"
         private const val TAG = "AppDatabase"
 
         /**
@@ -91,7 +91,7 @@ abstract class AppDatabase : RoomDatabase() {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext, AppDatabase::class.java, DATABASE_NAME
-                ).build()
+                ).fallbackToDestructiveMigration(true).build()
                 Clogger.i(
                     TAG, "Singleton database instance generated."
                 )

@@ -4,8 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.mpieterse.gradex.core.daos.DegreeDao
 import com.mpieterse.gradex.core.daos.StudentDao
+import com.mpieterse.gradex.core.daos.TermDao
+import com.mpieterse.gradex.core.models.data.Degree
 import com.mpieterse.gradex.core.models.data.Student
+import com.mpieterse.gradex.core.models.data.Term
 import com.mpieterse.gradex.core.services.AuthService
 import com.mpieterse.gradex.core.utils.AuthValidator
 import com.mpieterse.gradex.core.utils.Clogger
@@ -21,7 +25,9 @@ import javax.inject.Inject
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
     private val authService: AuthService,
-    private val dao: StudentDao
+    private val studentDao: StudentDao,
+    private val degreeDao: DegreeDao,
+    private val termDao: TermDao,
 ) : ViewModel() {
     companion object {
         private const val TAG = "SignUpViewModel"
@@ -70,12 +76,7 @@ class SignUpViewModel @Inject constructor(
                     TAG, "Attempt to authenticate returned a success!"
                 )
 
-                dao.upsert(
-                    Student(
-                        authId = authService.getCurrentUser()!!.uid
-                    )
-                )
-
+                seedDefaultValues()
                 _uiState.value = Success
             }
 
@@ -116,6 +117,32 @@ class SignUpViewModel @Inject constructor(
 
 
 // --- Internals
+
+
+    private fun seedDefaultValues() = viewModelScope.launch {
+        val student = Student(authId = authService.getCurrentUser()!!.uid)
+        val degree = Degree(
+            name = "Default",
+            studentId = student.id
+        )
+
+        studentDao.upsert(student)
+        degreeDao.upsert(degree)
+
+        termDao.upsert(
+            Term(
+                name = "Semester 1",
+                degreeId = degree.id
+            )
+        )
+
+        termDao.upsert(
+            Term(
+                name = "Semester 2",
+                degreeId = degree.id
+            )
+        )
+    }
 
 
     private fun validateCredentials(

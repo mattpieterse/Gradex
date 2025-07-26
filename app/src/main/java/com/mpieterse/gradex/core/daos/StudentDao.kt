@@ -2,6 +2,7 @@ package com.mpieterse.gradex.core.daos
 
 import androidx.room.Dao
 import androidx.room.Query
+import com.mpieterse.gradex.core.models.data.AggregatedStudent
 import com.mpieterse.gradex.core.models.data.Student
 import kotlinx.coroutines.flow.Flow
 import java.util.UUID
@@ -65,4 +66,17 @@ interface StudentDao : UpsertDao<Student> {
         """
     )
     suspend fun fetchOneByAuthenticationId(authId: String): Student?
+
+
+    /**
+     * TODO ...
+     */
+    @Query(
+        """
+            SELECT * FROM student 
+            WHERE auth_id = :authId 
+            LIMIT 1
+        """
+    )
+    suspend fun fetchOneFullStudentByAuthenticationId(authId: String): AggregatedStudent?
 }

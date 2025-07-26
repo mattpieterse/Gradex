@@ -35,6 +35,7 @@ data class AggregatedTeacher(
      * List of foreign [TeacherMailContact] entities.
      */
     @Relation(
+        entity = TeacherMailContact::class,
         parentColumn = "id",
         entityColumn = "teacher_id"
     )
@@ -45,13 +46,14 @@ data class AggregatedTeacher(
      * List of foreign [TeacherCellContact] entities.
      */
     @Relation(
+        entity = TeacherCellContact::class,
         parentColumn = "id",
         entityColumn = "teacher_id"
     )
-    val cellContacts: List<TeacherCellContact>,
+    val cellContacts: List<TeacherCellContact>
 
 
-    ) {
+) {
     companion object {
         private const val TAG = "AggregatedTeacher"
     }

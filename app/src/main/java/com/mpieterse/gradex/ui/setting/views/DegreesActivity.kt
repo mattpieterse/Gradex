@@ -8,12 +8,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.lifecycleScope
 import com.mpieterse.gradex.core.utils.Clogger
 import com.mpieterse.gradex.databinding.ActivityDegreesBinding
 import com.mpieterse.gradex.ui.setting.adapters.DegreeAdapter
 import com.mpieterse.gradex.ui.setting.viewmodels.DegreesViewModel
 import com.mpieterse.gradex.ui.shared.models.Clickable
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DegreesActivity : AppCompatActivity(), Clickable {
@@ -50,9 +52,11 @@ class DegreesActivity : AppCompatActivity(), Clickable {
         adapter = DegreeAdapter()
         binds.rvDegrees.layoutManager = LinearLayoutManager(this)
         binds.rvDegrees.adapter = adapter
-        adapter.update(
-            model.loadDegrees()
-        )
+        lifecycleScope.launch {
+            adapter.update(
+                model.loadDegrees()
+            )
+        }
     }
 
 
